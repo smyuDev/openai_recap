@@ -21,7 +21,6 @@ OpenAI API를 활용해 사용자가 입력한 영어 문장을 **자동으로 �
 | 상태관리     | Redux Toolkit                       |
 | 스타일링     | Tailwind CSS                        |
 | API 연동     | OpenAI API (3.5 turbo)         |
-| 백엔드/저장소| Firebase Hosting & Firestore        |
 | 배포         | Firebase Hosting                    |
 
 ---
@@ -40,7 +39,6 @@ OpenAI API를 활용해 사용자가 입력한 영어 문장을 **자동으로 �
   - `notesSlice.js`로 노트 리스트 및 선택된 노트를 관리
 
 - ✅ **Firebase 연동**
-  - 노트 정보는 Firebase Firestore에 저장
   - 배포는 Firebase Hosting 사용
 
 ---
@@ -82,8 +80,6 @@ recap_first/
 - **요약 속도 최적화**  
   → debounce 적용 고려 및 loading 상태 구현
 
-- **Firebase 배포 시 이미지/경로 깨짐 현상**  
-  → `vite.config.js`의 `base: './'` 설정으로 해결
 
 ---
 
