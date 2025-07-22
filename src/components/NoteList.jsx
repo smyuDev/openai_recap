@@ -43,7 +43,11 @@ const NoteList = () => {
 								className="flex items-center justify-between p-4 mb-2 bg-gray-800 rounded-lg hover:bg-gray-700"
 							>
 								<div>
-									<h3 className="text-lg font-semibold">{note.title}</h3>
+                  <h3
+                    data-testid="note-title"
+                    className="text-lg font-semibold">
+                    {note.title}
+                  </h3>
 									<p className="text-sm text-gray-400">{note.content.slice(0, 100)}</p>
 								</div>
 								<div>

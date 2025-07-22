@@ -7,9 +7,13 @@ import { format } from "date-fns";
 const NoteDetail = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const note = useSelector((state) =>
-    state.notes.find((note) => note.id === params.id)
-  );
+const note = useSelector((state) => state.notes.find((note) => note.id === params.id));
+
+// 🚨 note가 존재하지 않으면 예외 처리
+// if (!note) {
+// 	return <div className="p-6 text-white">해당 노트를 찾을 수 없습니다.</div>;
+// }
+  
   const dispatch = useDispatch();
   const handleChangeTitle = (e) => {
     dispatch(
@@ -35,7 +39,7 @@ const NoteDetail = () => {
     const data = await fetchOpenAI(note.content);
     dispatch(updateNote({
       ...note,
-      summary:data.choices[0].message.content,
+      summary: data.choices[0].message.content,
     }))
   }
   return (
@@ -44,6 +48,7 @@ const NoteDetail = () => {
 				<div>
 					<time className="block text-sm text-gray-400">{format(note.time, 'yyyy MM dd HH:mm')}</time>
 					<input
+						data-testid="title"
 						type="text"
 						className="text-2xl font-bold bg-transparent focus-within:outline-blue-500"
 						value={note.title}
@@ -60,6 +65,7 @@ const NoteDetail = () => {
 				<div className="flex-1 p-4 mr-4 bg-gray-800 rounded">
 					<h2 className="mb-2 text-lg font-semibold">메모</h2>
 					<textarea
+						data-testid="content"
 						value={note.content}
 						onChange={handleChangeContent}
 						className=" bg-gray-700 w-full h-64 p-2 rounded resize-none focus:(ring-2 ring-blue-500)"
